@@ -100,7 +100,7 @@ def jalankan_browser(index, url):
     try:
         print(f"[{time.strftime('%H:%M:%S')}] [Thread-{index}] Membuka: {url}")
         options = uc.ChromeOptions()
-options.binary_location = '/usr/bin/google-chrome-stable'
+        options.binary_location = '/usr/bin/google-chrome-stable'
 
         if user_agents:
             ua = random.choice(user_agents)
@@ -116,7 +116,7 @@ options.binary_location = '/usr/bin/google-chrome-stable'
         options.add_argument(f"--window-size={win_size}")
         options.add_argument("--disable-blink-features=AutomationControlled")
         options.add_argument("--start-maximized")
-        options.add_argument("--headless=new")  # bisa diganti "chrome" jika error
+        options.add_argument("--headless")  # Menggunakan headless mode standar
         options.add_argument("--disable-extensions")
         options.add_argument("--disable-infobars")
 
