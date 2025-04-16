@@ -8,6 +8,7 @@ from shutil import rmtree
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from shutil import which
 
 # Install otomatis chromedriver
 chromedriver_autoinstaller.install()
@@ -98,9 +99,16 @@ def randomize_canvas_fingerprint():
 
 def jalankan_browser(index, url):
     try:
+        # Menentukan path chromedriver yang benar
+        chromedriver_path = which("chromedriver")
+        if not chromedriver_path:
+            print(f"[ERROR] Chromedriver tidak ditemukan!")
+            return
+
         print(f"[{time.strftime('%H:%M:%S')}] [Thread-{index}] Membuka: {url}")
         options = uc.ChromeOptions()
         options.binary_location = '/usr/bin/google-chrome-stable'
+        options.add_argument(f"executable_path={chromedriver_path}")
 
         if user_agents:
             ua = random.choice(user_agents)
