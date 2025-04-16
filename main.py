@@ -100,6 +100,7 @@ def jalankan_browser(index, url):
     try:
         print(f"[{time.strftime('%H:%M:%S')}] [Thread-{index}] Membuka: {url}")
         options = uc.ChromeOptions()
+options.binary_location = '/usr/bin/google-chrome-stable'
 
         if user_agents:
             ua = random.choice(user_agents)
