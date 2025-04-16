@@ -108,6 +108,8 @@ def jalankan_browser(index, url):
         print(f"[{time.strftime('%H:%M:%S')}] [Thread-{index}] Membuka: {url}")
         options = uc.ChromeOptions()
         options.binary_location = '/usr/bin/google-chrome-stable'
+        
+        # Tentukan path chromedriver yang diinstal
         options.add_argument(f"executable_path={chromedriver_path}")
 
         if user_agents:
